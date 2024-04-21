@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-// import Indicator from "./custom/Indicator";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
@@ -13,9 +12,8 @@ function ProtectedRoute({ children }) {
         // const id = await localStorage.getItem("userID");
 
         // if (token && id) await dispatch(getUserInfo(id));
-        if (token && isRememberMe === "true")
-          navigate("/dashboard");
-        else navigate("/login");
+        if (!token || isRememberMe !== "true")
+          navigate("/login");
       } catch (err) {
         console.log(err);
       }

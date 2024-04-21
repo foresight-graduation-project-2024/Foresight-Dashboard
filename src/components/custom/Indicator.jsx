@@ -1,29 +1,18 @@
-import styled from "styled-components";
-import { BeatLoader } from "react-spinners"; // BeatLoader is just one of many loaders you can choose from
-import { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { BiLoaderAlt } from "react-icons/bi";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
+const rotate = keyframes`
+  to {
+    transform: rotate(1turn)
+  }
 `;
 
-function Indicator() {
-  const [color, setColor] = useState("");
-
-  useEffect(() => {
-    const colorValue = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-primary")
-      .trim();
-    setColor(colorValue);
-  }, []);
-
-  return (
-    <Container>
-      <BeatLoader color={color} size={18} />
-    </Container>
-  );
-}
+const Indicator = styled(BiLoaderAlt)`
+  width: 2.4rem;
+  height: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  animation: ${rotate} 1.5s infinite linear;
+`;
 
 export default Indicator;

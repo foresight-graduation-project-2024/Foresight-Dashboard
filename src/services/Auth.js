@@ -30,3 +30,10 @@ export const verifyLogIn = (authData, isRememberMe) => async (dispatch) => {
     dispatch(uiStopLoading());
   }
 };
+
+export const authLogout = () => async () => {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("role");
+  localStorage.removeItem("userID");
+  localStorage.removeItem("isRemember");
+};

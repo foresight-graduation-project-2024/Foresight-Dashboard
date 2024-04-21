@@ -6,7 +6,8 @@ import { getUsers } from "../store/userSlice";
 import Indicator from "../components/custom/Indicator";
 
 const Table = styled.table`
-  width: 100%;
+  width: 90%;
+  margin-left: 5%;
   border-collapse: collapse;
 `;
 
@@ -25,21 +26,22 @@ const Tr = styled.tr`
 
 const Th = styled.th`
   padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid var(--color-grey-400);
+  text-align: center;
 `;
 
 const Td = styled.td`
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid var(--color-grey-900);
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-grey-400);
 `;
 
 function Users() {
   const dispatch = useDispatch();
 
-  const users = useSelector((state) => state.user.users);
+  let users = useSelector((state) => state.user.users);
   const isLoading = useSelector((state) => state.ui.isLoading);
+
+  users = users?.filter((user) => user.role !== "ADMIN");
 
   useEffect(() => {
     dispatch(getUsers());

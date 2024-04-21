@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5';
 
 import Form from "../components/custom/Form";
 import Logo from "../components/Logo";
 import notVisiblePassword from "../assets/visibility_off.png";
 import visiblePassword from "../assets/visibility_on.png";
 import { verifyLogIn } from "../services/Auth";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import DotPulse from "../components/custom/DotPulse";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -50,6 +50,22 @@ const Input = styled.input`
   padding: 0.8rem 1.6rem;
 `;
 
+const CheckBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 8;
+  margin-bottom: 42;
+`;
+
+const CheckIcon = styled.div`
+  margin-right: 8px;
+  margin-bottom: -4px;
+`;
+
+const Text = styled.span`
+  font-size: 16px;
+`;
+
 const Icon = styled.div`
   position: absolute;
   top: 22%;
@@ -62,14 +78,14 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Logout = styled.div`
+const LoginContainer = styled.div`
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const LogoutBtn = styled.button`
+const LoginBtn = styled.button`
   width: 100%;
   font-size: 16px;
   color: var(--color-grey-0);
@@ -93,18 +109,38 @@ const Error = styled.p`
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
+  const [isRemember, setIsRemember] = useState(false);
+  const [colorPrimary, setColorPrimary] = useState('');
+  const [colorGrey, setColorGrey] = useState('');
 
   const isLoading = useSelector((state) => state.ui.isLoading);
+
+  useEffect(() => {
+    const primaryColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-primary')
+      .trim();
+    setColorPrimary(primaryColor);
+
+    const greyColor = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-grey-400')
+      .trim();
+    setColorGrey(greyColor);
+  }, []);
 
   const togglePasswordVisibility = (e) => {
     e.preventDefault();
     setIsVisiblePassword(!isVisiblePassword);
   };
+
+  const toggleCheckbox = useCallback(() => {
+    setIsRemember((prevIsRemember) => !prevIsRemember);
+  }, []);
 
   const handleSubmit = async (e) => {
     try {
@@ -113,7 +149,7 @@ function Login() {
         return;
       }
 
-      const data = await verifyLogIn({ email, password }, true);
+      const data = await dispatch(verifyLogIn({ email, password }, isRemember));
       if (data.role === "ADMIN") navigate("/dashboard");
     } catch (err) {
       if (err.response.data.code === 5) setLoginFailed(true);
@@ -167,13 +203,22 @@ function Login() {
           </PasswordField>
         </FormRowVertical>
 
+        <CheckBox>
+          <CheckIcon onClick={toggleCheckbox}>
+            {isRemember 
+              ? <IoCheckboxOutline size={20} color={colorPrimary} /> 
+              : <IoSquareOutline size={20} color={colorGrey} />
+            }
+          </CheckIcon>
+          <Text>Remember me</Text>
+        </CheckBox>
+
         {loginFailed && !isLoading && <Error>Email or Password are incorrect!</Error>}
 
         {isLoading && <p>Loading ...</p>}
-        <Logout>
-          <LogoutBtn>LOG IN</LogoutBtn>
-          {/* <LogoutBtn>{isLoading ? <DotPulse /> : "LOG IN"}</LogoutBtn> */}
-        </Logout>
+        <LoginContainer>
+          <LoginBtn>LOG IN</LoginBtn>
+        </LoginContainer>
       </Form>
     </LoginLayout>
   );
