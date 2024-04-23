@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const OilTemperature = () => {
+const BoxPlot = () => {
   const [chartData] = useState({
     series: [
       {
@@ -68,4 +68,4 @@ const OilTemperature = () => {
   );
 };
 
-export default OilTemperature;
+export default BoxPlot;

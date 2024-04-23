@@ -9,6 +9,7 @@ import Logo from "../components/Logo";
 import notVisiblePassword from "../assets/visibility_off.png";
 import visiblePassword from "../assets/visibility_on.png";
 import { verifyLogIn } from "../services/Auth";
+import Indicator from './../components/custom/Indicator';
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -215,9 +216,9 @@ function Login() {
 
         {loginFailed && !isLoading && <Error>Email or Password are incorrect!</Error>}
 
-        {isLoading && <p>Loading ...</p>}
+        {/* {isLoading && <p>Loading ...</p>} */}
         <LoginContainer>
-          <LoginBtn>LOG IN</LoginBtn>
+          <LoginBtn>{isLoading ? <Indicator /> : "LOG IN"}</LoginBtn>
         </LoginContainer>
       </Form>
     </LoginLayout>
