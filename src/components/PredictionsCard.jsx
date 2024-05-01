@@ -23,7 +23,7 @@ const MetricValue = styled.p`
   margin-bottom: 4px;
 `;
 
-const FailureCard = ({ title, value }) => {
+const PredictionsCard = ({ title, value }) => {
   return (
     <MetricContainer>
       <MetricTitle>{title}</MetricTitle>
@@ -32,9 +32,9 @@ const FailureCard = ({ title, value }) => {
   );
 };
 
-FailureCard.propTypes = {
+PredictionsCard.propTypes = {
   title: PropTypes.node.isRequired,
   value: PropTypes.node.isRequired
 };
 
-export default FailureCard
+export default PredictionsCard

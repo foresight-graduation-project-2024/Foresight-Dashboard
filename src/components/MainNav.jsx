@@ -79,13 +79,13 @@ function MainNav() {
         <li>
           <StyledNavLink to="/real-time">
             <HiOutlineChartPie />
-            <span>real-time Analysis</span>
+            <span>Real-time Analysis</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/failure">
+          <StyledNavLink to="/Predictions">
             <HiOutlineBeaker />
-            <span>Failure</span>
+            <span>Predictions history</span>
           </StyledNavLink>
         </li>
         {/* <li>

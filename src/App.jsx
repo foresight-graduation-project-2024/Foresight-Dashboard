@@ -14,7 +14,7 @@ import store from "./store/store";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import About from "./pages/About";
 import HistoricalAnalysis from "./pages/HistoricalAnalysis";
-import Failure from "./pages/Failure";
+import Predictions from "./pages/Predictions";
 import RealTimeAnalysis from "./pages/RealTimeAnalysis";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="historical" element={<HistoricalAnalysis />} />
               <Route path="real-time" element={<RealTimeAnalysis />} />
-              <Route path="failure" element={<Failure />} />
+              <Route path="predictions" element={<Predictions />} />
               {/* <Route path="users" element={<Users />} /> */}
               <Route path="settings" element={<Settings />} />
               <Route path="account" element={<Account />} />
