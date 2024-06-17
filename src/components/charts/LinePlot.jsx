@@ -9,6 +9,15 @@ const Container = styled.div`
   margin-bottom: 4.2rem;
 `;
 
+const DivCard = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const H1 = styled.h1`
+  text-align: center;
+`
+
 const Cards = styled.div`
   width: 30%;
   display: grid;
@@ -91,12 +100,15 @@ function LinePlot({
         <div id="html-dist"></div>
       </div>
       {!hideCard && (
-        <Cards>
-          <StatusCard title="Minimum" value={minV} />
-          <StatusCard title="Maximum" value={maxV} />
-          <StatusCard title="Average" value={avgV} />
-          <StatusCard title="Standard division" value={stdV} />
-        </Cards>
+        <DivCard>
+          <H1>{yAxisName}</H1>
+          <Cards>
+            <StatusCard title="Minimum" value={minV} />
+            <StatusCard title="Maximum" value={maxV} />
+            <StatusCard title="Average" value={avgV} />
+            <StatusCard title="Standard division" value={stdV} />
+          </Cards>
+        </DivCard>
       )}
     </Container>
   );

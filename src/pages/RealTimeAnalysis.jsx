@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import LinePlot from "../components/charts/LinePlot";
+import AreaPlot from "../components/charts/AreaPlot";
 
 function RealTimeAnalysis() {
   const [data, setData] = useState([]);
   const [connectionStatus, setConnectionStatus] = useState('Disconnected');
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8765');
+    const ws = new WebSocket('ws://localhost:8765/ws');
 
     ws.onopen = () => {
       console.log('WebSocket connection established');
@@ -45,13 +46,19 @@ function RealTimeAnalysis() {
         textTitle="TP2 Real-Time Analysis"
         hideCard={true}
       />
-      <LinePlot
+      {/* <LinePlot
         seriesData={data.slice(-20).map(item => item.TP3 || 0)}
         xAxisData={data.slice(-20).map(item => item.timestamp || 0)}
         yAxisName="TP3"
         seriesName="TP3 Value"
         textTitle="TP3 Real-Time Analysis"
         hideCard={true}
+      /> */}
+      <AreaPlot 
+        seriesName="TP3"
+        seriesData={data.slice(-20).map(item => item.TP3 || 0)}
+        textTitle="TP3 Real-Time Analysis"
+        labelValues={data.slice(-20).map(item => item.timestamp || 0)}
       />
       <LinePlot
         seriesData={data.slice(-20).map(item => item.H1 || 0)}
