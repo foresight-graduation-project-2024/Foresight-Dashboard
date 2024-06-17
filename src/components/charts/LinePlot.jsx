@@ -51,6 +51,7 @@ function LinePlot({
           enabled: false,
         },
       },
+      colors: ['var(--color-primary)'],
       dataLabels: {
         enabled: false,
       },
@@ -63,11 +64,7 @@ function LinePlot({
       },
       grid: {
         row: {
-          colors: [
-            window
-              .getComputedStyle(document.documentElement)
-              .getPropertyValue("--color-grey-100"),
-            "transparent",
+          colors: ["#f3f3f3", "transparent",
           ],
           opacity: 0.5,
         },
