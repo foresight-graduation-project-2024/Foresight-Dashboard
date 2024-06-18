@@ -17,6 +17,7 @@ const AreaPlot = ({ seriesName, seriesData, textTitle, labelValues }) => {
           enabled: false,
         },
       },
+      colors: ['var(--color-primary)'],
       dataLabels: {
         enabled: false,
       },
@@ -25,11 +26,7 @@ const AreaPlot = ({ seriesName, seriesData, textTitle, labelValues }) => {
       },
       title: {
         text: textTitle,
-        align: "left",
-      },
-      subtitle: {
-        text: "Price Movements",
-        align: "left",
+        align: "center",
       },
       labels: labelValues,
       xaxis: {

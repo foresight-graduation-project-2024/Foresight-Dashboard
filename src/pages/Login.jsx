@@ -151,7 +151,7 @@ function Login() {
       }
 
       const data = await dispatch(verifyLogIn({ email, password }, isRemember));
-      if (data.role === "ADMIN") navigate("/dashboard");
+      if (data.role === "ADMIN") navigate("/about");
     } catch (err) {
       if (err.response.data.code === 5) setLoginFailed(true);
     }
