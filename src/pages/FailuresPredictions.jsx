@@ -22,7 +22,7 @@ const TableRow = styled.tr`
   &:nth-of-type(even) {
     background-color: var(--color-grey-100);
   }
-`
+`;
 
 const TableHeader = styled.th`
   border: 1px solid var(--color-grey-300);
@@ -34,6 +34,14 @@ const TableCell = styled.td`
   text-align: center;
   border: 1px solid var(--color-grey-300);
   padding: 8px;
+`;
+
+const ErrorText = styled.p`
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-red-700);
+  margin-top: 1.6rem;
 `;
 
 const FailuresPredictions = ({ data }) => {
@@ -64,22 +72,26 @@ const FailuresPredictions = ({ data }) => {
               <TableHeader>Motor_current</TableHeader>
             </TableRow>
           </thead>
-          <tbody>
-            {data.map((record, index) => (
-              <TableRow key={index}>
-                <TableCell>{record.timestamp}</TableCell>
-                <TableCell>{record.type}</TableCell>
-                <TableCell>{record.TP2}</TableCell>
-                <TableCell>{record.TP3}</TableCell>
-                <TableCell>{record.H1}</TableCell>
-                <TableCell>{record.DV_pressure}</TableCell>
-                <TableCell>{record.Reservoirs}</TableCell>
-                <TableCell>{record.Oil_temperature}</TableCell>
-                <TableCell>{record.Flowmeter}</TableCell>
-                <TableCell>{record.Motor_current}</TableCell>
-              </TableRow>
-            ))}
-          </tbody>
+          {data.length > 0 ? (
+            <tbody>
+              {data.map((record, index) => (
+                <TableRow key={index}>
+                  <TableCell>{record.timestamp}</TableCell>
+                  <TableCell>{record.type}</TableCell>
+                  <TableCell>{record.TP2}</TableCell>
+                  <TableCell>{record.TP3}</TableCell>
+                  <TableCell>{record.H1}</TableCell>
+                  <TableCell>{record.DV_pressure}</TableCell>
+                  <TableCell>{record.Reservoirs}</TableCell>
+                  <TableCell>{record.Oil_temperature}</TableCell>
+                  <TableCell>{record.Flowmeter}</TableCell>
+                  <TableCell>{record.Motor_current}</TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          ) : (
+            <ErrorText>No Failure found!</ErrorText>
+          )}
         </Table>
       </TableContainer>
     </>
@@ -88,6 +100,6 @@ const FailuresPredictions = ({ data }) => {
 
 FailuresPredictions.propTypes = {
   data: PropTypes.array.isRequired,
-}
+};
 
 export default FailuresPredictions;

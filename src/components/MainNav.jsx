@@ -62,9 +62,9 @@ const P = styled.p`
   padding: 0.4rem 0.8rem;
   border-radius: 50%;
   border: 1px solid var(--color-red-700);
-`
+`;
 
-function MainNav({dataLength}) {
+function MainNav({ dataLength }) {
   return (
     <nav>
       <NavList>
@@ -102,7 +102,7 @@ function MainNav({dataLength}) {
           <StyledNavLink to="/Predictions">
             <HiOutlineBeaker />
             <span>Failures Predictions</span>
-            <P>{dataLength}</P>
+            {dataLength != 0 && <P>{dataLength}</P>}
           </StyledNavLink>
         </li>
         {/* <li>
@@ -124,6 +124,6 @@ function MainNav({dataLength}) {
 
 MainNav.propTypes = {
   dataLength: PropTypes.number.isRequired,
-}
+};
 
 export default MainNav;
