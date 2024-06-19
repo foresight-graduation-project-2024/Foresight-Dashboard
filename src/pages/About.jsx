@@ -18,7 +18,6 @@ const Container = styled.div`
 const Title = styled.h1`
   color: var(--color-grey-800);
   text-align: center;
-  /* margin-bottom: 1.2rem; */
 `;
 
 const Section = styled.div`
@@ -52,9 +51,6 @@ const ListItem = styled.li`
 `;
 
 const ProfileSection = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 24px; */
   max-width: 1200px;
   display: flex;
   flex-wrap: wrap;

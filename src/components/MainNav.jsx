@@ -2,15 +2,12 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import {
-  // HiOutlineCog6Tooth,
-  // HiOutlineHome,
   HiOutlineChartPie,
   HiOutlineChartBar,
   HiOutlineBeaker,
   HiOutlineInformationCircle,
-  HiOutlineChartBarSquare,
-  // HiOutlineUserGroup,
 } from "react-icons/hi2";
+import { GrLineChart } from "react-icons/gr";
 
 const NavList = styled.ul`
   display: flex;
@@ -68,12 +65,6 @@ function MainNav({ dataLength }) {
   return (
     <nav>
       <NavList>
-        {/* <li>
-          <StyledNavLink to="/dashboard">
-            <HiOutlineHome />
-            <span>Home</span>
-          </StyledNavLink>
-        </li> */}
         <li>
           <StyledNavLink to="/about">
             <HiOutlineInformationCircle />
@@ -88,7 +79,7 @@ function MainNav({ dataLength }) {
         </li>
         <li>
           <StyledNavLink to="/statistical">
-            <HiOutlineChartBarSquare />
+            <GrLineChart />
             <span>Statistical Analysis</span>
           </StyledNavLink>
         </li>
@@ -105,18 +96,6 @@ function MainNav({ dataLength }) {
             {dataLength != 0 && <P>{dataLength}</P>}
           </StyledNavLink>
         </li>
-        {/* <li>
-          <StyledNavLink to="/users">
-            <HiOutlineUserGroup />
-            <span>Users</span>
-          </StyledNavLink>
-        </li> */}
-        {/* <li>
-          <StyledNavLink to="/settings">
-            <HiOutlineCog6Tooth />
-            <span>Settings</span>
-          </StyledNavLink>
-        </li> */}
       </NavList>
     </nav>
   );

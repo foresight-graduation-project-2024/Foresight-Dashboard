@@ -120,7 +120,6 @@ function HistoricalAnalysis() {
 
   return (
     <div>
-      {/* <CsvReader /> */}
       <LinePlot
         seriesData={TP2Data.seriesData}
         textTitle="Monthly Time Series Plot for TP2 Data"

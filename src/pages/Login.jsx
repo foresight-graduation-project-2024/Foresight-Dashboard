@@ -161,9 +161,6 @@ function Login() {
     <LoginLayout>
       <Logo />
       <LoginHeader>
-        {/* <h1>
-          Welcome to <strong>foresight</strong>
-        </h1> */}
         <p>Please enter your details to login</p>
       </LoginHeader>
 
@@ -176,7 +173,6 @@ function Login() {
             autoComplete="username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            // disabled={isLoading}
           />
         </FormRowVertical>
 
@@ -216,7 +212,6 @@ function Login() {
 
         {loginFailed && !isLoading && <Error>Email or Password are incorrect!</Error>}
 
-        {/* {isLoading && <p>Loading ...</p>} */}
         <LoginContainer>
           <LoginBtn>{isLoading ? <Indicator /> : "LOG IN"}</LoginBtn>
         </LoginContainer>
