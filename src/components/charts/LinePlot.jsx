@@ -26,9 +26,7 @@ const Cards = styled.div`
 
 function LinePlot({
   seriesData,
-  xAxisData,
   yAxisName,
-  seriesName,
   textTitle,
   minV,
   maxV,
@@ -39,7 +37,7 @@ function LinePlot({
   const lineChartData = {
     series: [
       {
-        name: seriesName,
+        name: `${yAxisName} Value`,
         data: seriesData,
       },
     ],
@@ -70,7 +68,13 @@ function LinePlot({
         },
       },
       xaxis: {
-        categories: xAxisData,
+        categories: [
+          "2021-12-31",
+          "2022-01-31",
+          "2022-02-28",
+          "2022-03-31",
+          "2022-04-30",
+        ],
         title: {
           text: "Timestamp",
         },
@@ -113,9 +117,7 @@ function LinePlot({
 
 LinePlot.propTypes = {
   seriesData: PropTypes.array.isRequired,
-  xAxisData: PropTypes.array.isRequired,
   yAxisName: PropTypes.string.isRequired,
-  seriesName: PropTypes.string.isRequired,
   textTitle: PropTypes.string.isRequired,
   minV: PropTypes.string,
   maxV: PropTypes.string,

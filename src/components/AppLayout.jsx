@@ -1,7 +1,9 @@
 import { Outlet } from "react-router-dom";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import styled from "styled-components";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -16,16 +18,20 @@ const Main = styled.main`
   /* overflow: scroll; */
 `;
 
-function AppLayout() {
+function AppLayout({ dataLength }) {
   return (
     <StyledAppLayout>
       <Header />
-      <Sidebar />
+      <Sidebar dataLength={dataLength} />
       <Main>
         <Outlet />
       </Main>
     </StyledAppLayout>
   );
+}
+
+AppLayout.propTypes = {
+  dataLength: PropTypes.number.isRequired,
 }
 
 export default AppLayout;

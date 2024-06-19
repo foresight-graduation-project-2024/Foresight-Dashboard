@@ -14,9 +14,48 @@ import store from "./store/store";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import About from "./pages/About";
 import HistoricalAnalysis from "./pages/HistoricalAnalysis";
-import Predictions from "./pages/Predictions";
+import FailuresPredictions from "./pages/FailuresPredictions";
 import RealTimeAnalysis from "./pages/RealTimeAnalysis";
 import StatisticalAnalysis from "./pages/StatisticalAnalysis";
+
+const data = [
+  {
+    timestamp: "2024-06-23 16:51:32",
+    TP2: -0.012,
+    TP3: 9.758,
+    H1: 9.76,
+    DV_pressure: -0.028,
+    Reservoirs: 1.576,
+    Oil_temperature: 63.35,
+    Flowmeter: 19.049625,
+    Motor_current: 3.955,
+    type: "Failure 1",
+  },
+  {
+    timestamp: "2024-06-23 16:51:32",
+    TP2: -0.012,
+    TP3: 9.76,
+    H1: 9.76,
+    DV_pressure: -0.028,
+    Reservoirs: 1.578,
+    Oil_temperature: 63.25,
+    Flowmeter: 19.049625,
+    Motor_current: 4.0275,
+    type: "Failure 2",
+  },
+  {
+    timestamp: "2024-06-23 16:51:32",
+    TP2: -0.01,
+    TP3: 9.76,
+    H1: 9.76,
+    DV_pressure: -0.028,
+    Reservoirs: 1.578,
+    Oil_temperature: 63.325,
+    Flowmeter: 19.04028125,
+    Motor_current: 3.945,
+    type: "Failure 3",
+  },
+];
 
 function App() {
   return (
@@ -28,7 +67,7 @@ function App() {
             <Route
               element={
                 <ProtectedRoute>
-                  <AppLayout />
+                  <AppLayout dataLength={data.length} />
                 </ProtectedRoute>
               }
             >
@@ -38,7 +77,7 @@ function App() {
               <Route path="historical" element={<HistoricalAnalysis />} />
               <Route path="statistical" element={<StatisticalAnalysis />} />
               <Route path="real-time" element={<RealTimeAnalysis />} />
-              <Route path="predictions" element={<Predictions />} />
+              <Route path="predictions" element={<FailuresPredictions data={data} />} />
               {/* <Route path="users" element={<Users />} /> */}
               {/* <Route path="settings" element={<Settings />} /> */}
               <Route path="account" element={<Account />} />

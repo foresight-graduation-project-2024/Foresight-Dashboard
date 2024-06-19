@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import {
   // HiOutlineCog6Tooth,
   // HiOutlineHome,
@@ -55,7 +56,15 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function MainNav() {
+const P = styled.p`
+  color: var(--color-red-700);
+  background-color: var(--color-grey-200);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-red-700);
+`
+
+function MainNav({dataLength}) {
   return (
     <nav>
       <NavList>
@@ -92,7 +101,8 @@ function MainNav() {
         <li>
           <StyledNavLink to="/Predictions">
             <HiOutlineBeaker />
-            <span>Predictions history</span>
+            <span>Failures Predictions</span>
+            <P>{dataLength}</P>
           </StyledNavLink>
         </li>
         {/* <li>
@@ -110,6 +120,10 @@ function MainNav() {
       </NavList>
     </nav>
   );
+}
+
+MainNav.propTypes = {
+  dataLength: PropTypes.number.isRequired,
 }
 
 export default MainNav;
