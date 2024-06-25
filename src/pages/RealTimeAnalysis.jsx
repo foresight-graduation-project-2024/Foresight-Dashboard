@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import LinePlot from "../components/charts/LinePlot";
 import AreaPlot from "../components/charts/AreaPlot";
 
@@ -22,12 +23,9 @@ function RealTimeAnalysis() {
       console.log('WebSocket error:', error);
     };
 
-    ws.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
-
     return () => {
       ws.close();
+      console.log('WebSocket connection closed');
     };
   }, []);
 

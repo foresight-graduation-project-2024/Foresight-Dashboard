@@ -26,6 +26,7 @@ const Cards = styled.div`
 
 function LinePlot({
   seriesData,
+  xAxisData,
   yAxisName,
   textTitle,
   minV,
@@ -68,7 +69,7 @@ function LinePlot({
         },
       },
       xaxis: {
-        categories: [
+        categories: xAxisData || [
           "2021-12-31",
           "2022-01-31",
           "2022-02-28",
@@ -117,6 +118,7 @@ function LinePlot({
 
 LinePlot.propTypes = {
   seriesData: PropTypes.array.isRequired,
+  xAxisData: PropTypes.array,
   yAxisName: PropTypes.string.isRequired,
   textTitle: PropTypes.string.isRequired,
   minV: PropTypes.string,

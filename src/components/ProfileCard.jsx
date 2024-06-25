@@ -25,6 +25,7 @@ const Avatar = styled.img`
   border-radius: 50%;
   height: 140px;
   width: 140px;
+  object-fit: cover;
 `;
 
 const Name = styled.h2`
@@ -33,7 +34,7 @@ const Name = styled.h2`
   margin: 20px 0 10px;
 `;
 
-const Title = styled.h4`
+const Title = styled.h3`
   color: var(--color-grey-500);
   font-size: 16px;
   margin: 0 0 20px;
@@ -66,15 +67,15 @@ const ProfileCard = ({
   return (
     <Card>
       <Header>
-        <Avatar src={avatar} alt="avatar" />
+        <Avatar src={avatar} alt={`${peopleName}'s avatar`} loading="lazy" />
       </Header>
       <Name>{peopleName}</Name>
       <Title>{peopleJob}</Title>
       <SocialLinks>
-        <SocialLink href={LinkedInLink}>
+        <SocialLink href={LinkedInLink} aria-label="LinkedIn profile">
           <FaLinkedin />
         </SocialLink>
-        <SocialLink href={GitHubLink}>
+        <SocialLink href={GitHubLink} aria-label="GitHub profile">
           <FaGithub />
         </SocialLink>
       </SocialLinks>

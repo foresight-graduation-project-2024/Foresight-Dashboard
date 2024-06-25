@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import LinePlot from "../components/charts/LinePlot";
 import BoxPlot from "../components/charts/BoxPlot";
-import imageRelation from "../assets/relation.jpg";
+import imageRelation from "../assets/relation.webp";
 
 const ImageContainer = styled.div`
   text-align: center;

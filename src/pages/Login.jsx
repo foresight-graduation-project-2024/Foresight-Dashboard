@@ -6,8 +6,8 @@ import { IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5';
 
 import Form from "../components/custom/Form";
 import Logo from "../components/Logo";
-import notVisiblePassword from "../assets/visibility_off.png";
-import visiblePassword from "../assets/visibility_on.png";
+import notVisiblePassword from "../assets/visibility_off.webp";
+import visiblePassword from "../assets/visibility_on.webp";
 import { verifyLogIn } from "../services/Auth";
 import Indicator from './../components/custom/Indicator';
 

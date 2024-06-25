@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import defaultUser from "../../assets/default-user.png";
+import defaultUser from "../../assets/default-user.webp";
 
 const StyledUserAvatar = styled.div`
   display: flex;

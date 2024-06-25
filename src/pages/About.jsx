@@ -1,19 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
 
 import ProfileCard from "../components/ProfileCard";
-import profileImg1 from "../assets/abdelnaser.jpg";
-import profileImg2 from "../assets/darsh.jpg";
-import profileImg3 from "../assets/shihab.jpg";
-import profileImg4 from "../assets/abdo.jpg";
-import profileImg5 from "../assets/saeed.jpg";
-import profileImg6 from "../assets/khalid.jpg";
-
-const Container = styled.div`
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: var(--color-grey-50);
-`;
+import profileImg1 from "../assets/abdelnaser.webp";
+import profileImg2 from "../assets/darsh.webp";
+import profileImg3 from "../assets/shihab.webp";
+import profileImg4 from "../assets/abdo.webp";
+import profileImg5 from "../assets/saeed.webp";
+import profileImg6 from "../assets/khalid.webp";
 
 const Title = styled.h1`
   color: var(--color-grey-800);
@@ -59,22 +52,17 @@ const ProfileSection = styled.div`
   margin: 0 auto;
   gap: 2.4rem 9.6rem;
   margin-top: 2.4rem;
-`
+`;
 
 const About = () => {
   return (
-    <Container>
+    <>
       <Title>About Our Predictive Maintenance Web App for Metro Lines</Title>
       <Section>
         <Paragraph>
-          Welcome to our state-of-the-art Predictive Maintenance Web App,
-          designed specifically for the metro lines industry. 
-          Our platform harnesses the power of advanced artificial intelligence, big data, and
+          Harnesses the power of advanced artificial intelligence, big data, and
           large-scale software systems to deliver real-time monitoring,
-          prediction, and historical analysis of equipment failures. 
-          This comprehensive solution caters to a diverse range of stakeholders,
-          offering a transformation approach to maintenance strategies in the
-          electrical engineering field.
+          prediction, and historical analysis of equipment failures.
         </Paragraph>
       </Section>
       <Section>
@@ -102,10 +90,13 @@ const About = () => {
       <Section>
         <SubTitle>Why Choose Our Solution?</SubTitle>
         <Paragraph>
-          Our Predictive Maintenance System is more than just a tool—it's a
-          revolution in maintenance strategies. By integrating cutting-edge
-          technologies with user-centric design, we provide a holistic solution
-          that addresses the complex needs of the metro lines industry.
+          Our Predictive Maintenance System is more than just a tool it is a
+          revolution in maintenance strategies.
+        </Paragraph>
+        <Paragraph>
+          By integrating cutting-edge technologies with user-centric design, we
+          provide a holistic solution that addresses the complex needs of the
+          metro lines industry.
         </Paragraph>
         <List>
           <ListItem>
@@ -126,17 +117,6 @@ const About = () => {
           </ListItem>
         </List>
       </Section>
-      <Section>
-        <SubTitle>Our Impact on Electrical Engineering</SubTitle>
-        <Paragraph>
-          The electrifying impact of our technology within the electrical
-          engineering domain is profound. It propels the field towards
-          optimizing the reliability and performance of metro systems, providing
-          engineers with the tools they need to address complex issues, ensure
-          passenger safety, and enhance the overall efficiency of vital urban
-          infrastructure.
-        </Paragraph>
-      </Section>
 
       <SubTitle>Development Team</SubTitle>
       <ProfileSection>
@@ -150,7 +130,7 @@ const About = () => {
         <ProfileCard
           avatar={profileImg2}
           peopleName="Mostafa Hamdy"
-          peopleJob="(React | React Native) Developer"
+          peopleJob="(React & React Native) Developer"
           LinkedInLink="https://www.linkedin.com/in/mostafa-7amdy/"
           GitHubLink="https://github.com/MostafaHamdy3"
         />
@@ -183,7 +163,7 @@ const About = () => {
           GitHubLink="https://github.com/horus208"
         />
       </ProfileSection>
-    </Container>
+    </>
   );
 };
 
