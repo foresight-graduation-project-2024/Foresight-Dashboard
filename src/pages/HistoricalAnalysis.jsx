@@ -1,7 +1,8 @@
+import { lazy, Suspense } from "react";
 import styled from "styled-components";
 
-import LinePlot from "../components/charts/LinePlot";
-import BoxPlot from "../components/charts/BoxPlot";
+const LinePlot = lazy(() => import("../components/charts/LinePlot"));
+const BoxPlot = lazy(() => import("../components/charts/BoxPlot"));
 import imageRelation from "../assets/relation.webp";
 
 const ImageContainer = styled.div`
@@ -14,37 +15,23 @@ const Img = styled.img`
 `;
 
 function HistoricalAnalysis() {
-  const TP2Data = {
-    seriesData: [0.947143, 1.056724, 1.136294, 1.29923, 1.33104],
-  };
+  const TP2Data = [0.947143, 1.056724, 1.136294, 1.29923, 1.33104];
 
-  const TP3Data = {
-    seriesData: [8.989071, 8.932889, 8.980022, 8.991801, 8.979303],
-  };
+  const TP3Data = [8.989071, 8.932889, 8.980022, 8.991801, 8.979303];
 
-  const H1Data = {
-    seriesData: [8.038328, 7.890792, 7.854466, 7.534961, 7.452888],
-  };
+  const H1Data = [8.038328, 7.890792, 7.854466, 7.534961, 7.452888];
 
-  const DVPressureData = {
-    seriesData: [-0.019723, -0.018822, -0.019159, -0.031814, -0.031934],
-  };
+  const DVPressureData = [
+    -0.019723, -0.018822, -0.019159, -0.031814, -0.031934,
+  ];
 
-  const reservoirsData = {
-    seriesData: [1.630502, 1.654209, 1.610955, 1.474412, 1.47025],
-  };
+  const reservoirsData = [1.630502, 1.654209, 1.610955, 1.474412, 1.47025];
 
-  const oilTempData = {
-    seriesData: [65.843907, 67.048463, 68.441077, 67.775851, 67.663433],
-  };
+  const oilTempData = [65.843907, 67.048463, 68.441077, 67.775851, 67.663433];
 
-  const flowmeterData = {
-    seriesData: [20.128266, 20.32416, 20.348987, 20.549074, 20.631989],
-  };
+  const flowmeterData = [20.128266, 20.32416, 20.348987, 20.549074, 20.631989];
 
-  const motorData = {
-    seriesData: [2.040461, 2.156995, 2.33871, 2.665469, 2.723441],
-  };
+  const motorData = [2.040461, 2.156995, 2.33871, 2.665469, 2.723441];
 
   const oliFailureData = {
     normalData: [52.2, 58.1, 63.95, 68.15, 75.125],
@@ -119,9 +106,9 @@ function HistoricalAnalysis() {
   };
 
   return (
-    <div>
+    <Suspense fallback={<div>Loading charts...</div>}>
       <LinePlot
-        seriesData={TP2Data.seriesData}
+        seriesData={TP2Data}
         textTitle="Monthly Time Series Plot for TP2 Data"
         yAxisName="TP2"
         minV="-0.03"
@@ -130,7 +117,7 @@ function HistoricalAnalysis() {
         stdV="3.08"
       />
       <LinePlot
-        seriesData={TP3Data.seriesData}
+        seriesData={TP3Data}
         textTitle="Monthly Time Series Plot for TP3 Data"
         yAxisName="TP3"
         minV="0.01"
@@ -139,7 +126,7 @@ function HistoricalAnalysis() {
         stdV="0.70"
       />
       <LinePlot
-        seriesData={H1Data.seriesData}
+        seriesData={H1Data}
         textTitle="Monthly Time Series Plot for H1 Data"
         yAxisName="H1"
         minV="-0.03"
@@ -148,7 +135,7 @@ function HistoricalAnalysis() {
         stdV="3.05"
       />
       <LinePlot
-        seriesData={DVPressureData.seriesData}
+        seriesData={DVPressureData}
         yAxisName="DV-Pressure"
         textTitle="Monthly Time Series Plot for DVPressure Data"
         minV="-0.04"
@@ -157,7 +144,7 @@ function HistoricalAnalysis() {
         stdV="0.15"
       />
       <LinePlot
-        seriesData={reservoirsData.seriesData}
+        seriesData={reservoirsData}
         yAxisName="Reservoirs"
         textTitle="Monthly Time Series Plot for Reservoir Data"
         minV="1.35"
@@ -166,7 +153,7 @@ function HistoricalAnalysis() {
         stdV="0.09"
       />
       <LinePlot
-        seriesData={oilTempData.seriesData}
+        seriesData={oilTempData}
         textTitle="Monthly Time Series Plot for Oil Temperature Data"
         yAxisName="Oil Temperature"
         minV="13.88"
@@ -175,7 +162,7 @@ function HistoricalAnalysis() {
         stdV="5.38"
       />
       <LinePlot
-        seriesData={flowmeterData.seriesData}
+        seriesData={flowmeterData}
         yAxisName="Flowmeter"
         textTitle="Monthly Time Series Plot for Flowmeter Data"
         minV="18.83"
@@ -184,7 +171,7 @@ function HistoricalAnalysis() {
         stdV="3.74"
       />
       <LinePlot
-        seriesData={motorData.seriesData}
+        seriesData={motorData}
         yAxisName="Motor"
         textTitle="Monthly Time Series Plot for Motor Data"
         minV="-0.01"
@@ -259,9 +246,9 @@ function HistoricalAnalysis() {
       />
 
       <ImageContainer>
-        <Img src={imageRelation} alt="The relation" />
+        <Img src={imageRelation} alt="The relation" loading="lazy" />
       </ImageContainer>
-    </div>
+    </Suspense>
   );
 }
 

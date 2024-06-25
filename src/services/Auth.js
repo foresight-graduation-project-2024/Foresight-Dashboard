@@ -11,7 +11,7 @@ export const verifyLogIn = (authData, isRememberMe) => async (dispatch) => {
         'Content-Type': 'application/json'
       }
     });
-    console.log("Response => ", response.data);
+    // console.log("Response => ", response.data);
     const token = response.data.token;
     const role = response.data.role;
     const id = response.data.id;

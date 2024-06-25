@@ -28,7 +28,7 @@ function UserAvatar() {
 
   return (
     <StyledUserAvatar>
-      <Avatar src={defaultUser} alt={"user-avatar"} />
+      <Avatar src={defaultUser} alt={"user-avatar"} loading="lazy" />
       <span>{user.firstname}</span>
     </StyledUserAvatar>
   );

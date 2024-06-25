@@ -1,12 +1,13 @@
+import { lazy, Suspense } from "react";
 import styled from "styled-components";
 
-import ProfileCard from "../components/ProfileCard";
+const ProfileCard = lazy(() => import("../components/ProfileCard"));
 import profileImg1 from "../assets/abdelnaser.webp";
 import profileImg2 from "../assets/darsh.webp";
 import profileImg3 from "../assets/shihab.webp";
-import profileImg4 from "../assets/abdo.webp";
+import profileImg4 from "../assets/khalid.webp";
 import profileImg5 from "../assets/saeed.webp";
-import profileImg6 from "../assets/khalid.webp";
+import profileImg6 from "../assets/abdo.webp";
 
 const Title = styled.h1`
   color: var(--color-grey-800);
@@ -53,6 +54,51 @@ const ProfileSection = styled.div`
   gap: 2.4rem 9.6rem;
   margin-top: 2.4rem;
 `;
+
+const profiles = [
+  {
+    img: profileImg1,
+    name: "Ahmed Abdelnasser",
+    job: "Data Engineer",
+    LinkedInLink: "https://www.linkedin.com/in/ahmed-abdelnasser-sayed",
+    GitHubLink: "https://github.com/ahmed3bnaser",
+  },
+  {
+    img: profileImg2,
+    name: "Mostafa Hamdy",
+    job: "(React & React Native) Developer",
+    LinkedInLink: "https://www.linkedin.com/in/mostafa-7amdy/",
+    GitHubLink: "https://github.com/MostafaHamdy3",
+  },
+  {
+    img: profileImg3,
+    name: "Shihab Mahmoud",
+    job: "Backend Developer",
+    LinkedInLink: "https://www.linkedin.com/in/shihab-mahmoud-20a98b1b9/",
+    GitHubLink: "https://github.com/S65001",
+  },
+  {
+    img: profileImg4,
+    name: "Khalid Mohammed",
+    job: "Software Engineer",
+    LinkedInLink: "https://www.linkedin.com/in/khalid-mohammed-763ba019b/",
+    GitHubLink: "https://github.com/Khalid24225",
+  },
+  {
+    img: profileImg5,
+    name: "Ahmed Saeed",
+    job: "Data scientist",
+    LinkedInLink: "https://www.linkedin.com/in/ahmed-saeed-436124216/",
+    GitHubLink: "https://github.com/AhmedSaeed0qfq",
+  },
+  {
+    img: profileImg6,
+    name: "Abdelrahman Essam",
+    job: "Data Engineer",
+    LinkedInLink: "https://eg.linkedin.com/in/abdelrahman-essam-4bb756252",
+    GitHubLink: "https://github.com/horus208",
+  },
+];
 
 const About = () => {
   return (
@@ -120,48 +166,18 @@ const About = () => {
 
       <SubTitle>Development Team</SubTitle>
       <ProfileSection>
-        <ProfileCard
-          avatar={profileImg1}
-          peopleName="Ahmed Abdelnasser"
-          peopleJob="Data Engineer"
-          LinkedInLink="https://www.linkedin.com/in/ahmed-abdelnasser-sayed"
-          GitHubLink="https://github.com/ahmed3bnaser"
-        />
-        <ProfileCard
-          avatar={profileImg2}
-          peopleName="Mostafa Hamdy"
-          peopleJob="(React & React Native) Developer"
-          LinkedInLink="https://www.linkedin.com/in/mostafa-7amdy/"
-          GitHubLink="https://github.com/MostafaHamdy3"
-        />
-        <ProfileCard
-          avatar={profileImg3}
-          peopleName="Shihab Mahmoud"
-          peopleJob="Backend Developer"
-          LinkedInLink="https://www.linkedin.com/in/shihab-mahmoud-20a98b1b9/"
-          GitHubLink="https://github.com/S65001"
-        />
-        <ProfileCard
-          avatar={profileImg6}
-          peopleName="Khalid Mohammed"
-          peopleJob="Data Engineer"
-          LinkedInLink="https://www.linkedin.com/in/khalid-mohammed-763ba019b/"
-          GitHubLink="https://github.com/Khalid24225"
-        />
-        <ProfileCard
-          avatar={profileImg5}
-          peopleName="Ahmed Saeed"
-          peopleJob="Data scientist"
-          LinkedInLink="https://www.linkedin.com/in/ahmed-saeed-436124216/"
-          GitHubLink="https://github.com/AhmedSaeed0qfq"
-        />
-        <ProfileCard
-          avatar={profileImg4}
-          peopleName="Abdelrahman Essam"
-          peopleJob="Software Engineer"
-          LinkedInLink="https://eg.linkedin.com/in/abdelrahman-essam-4bb756252"
-          GitHubLink="https://github.com/horus208"
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          {profiles.map((profile) => (
+            <ProfileCard
+              key={profile.img}
+              avatar={profile.img}
+              peopleName={profile.name}
+              peopleJob={profile.job}
+              LinkedInLink={profile.LinkedInLink}
+              GitHubLink={profile.GitHubLink}
+            />
+          ))}
+        </Suspense>
       </ProfileSection>
     </>
   );

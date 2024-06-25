@@ -194,6 +194,7 @@ function Login() {
                   alt="Visible icon"
                   src={isVisiblePassword ? visiblePassword : notVisiblePassword}
                   style={{ width: 24, height: 24 }}
+                  loading="lazy"
                 />
               </Button>
             </Icon>

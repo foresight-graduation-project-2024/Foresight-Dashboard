@@ -13,19 +13,6 @@ export const getCurToken = () => async () => {
   return headers;
 }
 
-export const getUsers = createAsyncThunk('users/getUsers', async (_, { dispatch }) => {
-  dispatch(uiStartLoading());
-  try {
-    const headers = await dispatch(getCurToken());
-    const response = await axios.get(`${baseUrl}/users`, { headers });
-    return response.data;
-  } catch (error) {
-    console.error("getUsers ERROR ==>", error);
-  } finally {
-    dispatch(uiStopLoading());
-  }
-});
-
 export const getUserInfo = createAsyncThunk('users/getUserInfo', async (id, { dispatch }) => {
   dispatch(uiStartLoading());
   try {
@@ -35,6 +22,7 @@ export const getUserInfo = createAsyncThunk('users/getUserInfo', async (id, { di
       Authorization: `${token}`,
     };
     const response = await axios.get(`${baseUrl}/users/${id}`, { headers });
+    console.log("Get user info =>", response.data);
     return response.data;
   } catch (error) {
     console.error("getUserInfo ERROR ==>", error);
@@ -57,9 +45,6 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload || [];
-      })
       .addCase(getUserInfo.fulfilled, (state, action) => {
         state.user = action.payload;
       });

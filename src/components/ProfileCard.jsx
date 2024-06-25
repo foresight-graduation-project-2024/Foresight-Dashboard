@@ -23,9 +23,11 @@ const Header = styled.div`
 
 const Avatar = styled.img`
   border-radius: 50%;
-  height: 140px;
-  width: 140px;
+  height: auto;
+  width: 100%;
   object-fit: cover;
+  max-width: 140px;
+  max-height: 140px;
 `;
 
 const Name = styled.h2`
