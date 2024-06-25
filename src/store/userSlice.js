@@ -22,7 +22,6 @@ export const getUserInfo = createAsyncThunk('users/getUserInfo', async (id, { di
       Authorization: `${token}`,
     };
     const response = await axios.get(`${baseUrl}/users/${id}`, { headers });
-    console.log("Get user info =>", response.data);
     return response.data;
   } catch (error) {
     console.error("getUserInfo ERROR ==>", error);
